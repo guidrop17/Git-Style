@@ -2,7 +2,7 @@
 
 ## Branching
 
-- Choose short and descriptive names:
+- Escolha nomes curtos e descritivos:
 
 ```
 # GOOD
@@ -12,7 +12,7 @@ $ git checkout -b feature/oauth-migtration
 $git checkout -b login_fix
 ```
 
-- Identifiers from corresponding tickets in an external service (eg. a GitHub issue) are also good candidates for use in branch names. For example:
+- Identificadores de tickets correspondentes em um serviço externo (por exemplo, um problema do GitHub) também são bons candidatos para uso em nomes de ramificações. Por exemplo:
 
 ```
 # GitHub issue #23
@@ -20,8 +20,8 @@ $git checkout -b login_fix
 $ git checkout -b fix/issue-15
 ```
 
-- Use slashes to separate words
-- When several people are working on the same feature, it might be convenient to have personal feature branches and a team-wide feature branch. Use the following name convention:
+- Use barras para separar palavras
+- Quando várias pessoas estão trabalhando no mesmo recurso, pode ser conveniente ter ramificações de recursos pessoais e uma ramificação de recursos para toda a equipe. Use a seguinte convenção de nome:
 
 ```
 $ git checkout -b feature-a/master # team-wide branch
@@ -31,54 +31,54 @@ $ git checkout -b feature-a/joao # Joao's personal branch
 $ git checkout -b feature-a/maria # Maria's personal branch
 ```
 
-- Merge at will the personal branches to the team-wide branch. Eventually, the team-wide branch will be merged to `master`.
-- Delete your branch from the upstream repository after it's merged, unless there is a specific reason not to. 
-- _Tip_: Use the following command while being on `master`, to list merged branches:
+- Merger à vontade as ramificações pessoais para a ramificação de toda a equipe. Eventualmente, a ramificação de toda a equipe será mesclada em `master`.
+- Exclua sua ramificação do repositório upstream após a mesclagem, a menos que haja um motivo específico para não fazê-lo.
+- _Dica_: Use o seguinte comando enquanto estiver em `master`, para listar ramificações mescladas:
 ```
 $ git branch --merged | grep -v `\\*`
 ```
 
 ## Commits
 
-- **Each commit should be a single logical change.** Don't make several logical changes in one commit. For example, if a patch fixes a bug and optimizes the performance of a feature, split it into two separate commits.
+- **Cada commit deve ser uma única mudança lógica.** Não faça várias mudanças lógicas em um commit. Por exemplo, se um patch corrigir um bug e otimizar o desempenho de um recurso, divida-o em dois commits separados.
 
-- _Tip_: Use `git add -p` to interactively stage specific portions of the modified files.
+- _Dica_: Use `git add -p` para preparar interativamente partes específicas dos arquivos modificados.
 
-- **Don't split a single logical change into several commits.** For example, the implementation of a feature and the corresponding tests should be in the same commit.
+- **Não divida uma única alteração lógica em vários commits.** Por exemplo, a implementação de um recurso e os testes correspondentes devem estar no mesmo commit.
 
-- **Commit _early_ and _often_.**  Small, self-contained commits are easier to understand and revert when something goes wrong.
+- **Commit _early_ e _often_.** Commits pequenos e autocontidos são mais fáceis de entender e reverter quando algo dá errado.
 
-- **Commits should be ordered _logically_ .**  For example, if commit X depends on changes done in commit Y, then commit Y should come before commit X.
+- **Os commits devem ser ordenados _logicamente_ .** Por exemplo, se o commit X depende das mudanças feitas no commit Y, então o commit Y deve vir antes do commit X.
 
-### Commit Messages
+### Mensagens de confirmação
 
-A commit message consists of three distinct parts separated by a blank line: the title, the (optional) body and the (optional) footer. The layout looks like this:
+A mensagem de confirmação consiste em três partes distintas separadas por uma linha em branco: o título, o corpo (opcional) e o rodapé (opcional). O layout fica assim:
 ```
-feat: teach how to write commit message
+feat: ensinar como escrever mensagem de commit
 
-A further explanation is a good practice we recommend you follow.
+Uma explicação adicional é uma boa prática que recomendamos que você siga.
 
-Resolves: #1234
+Resolva: #1234
 ```
-The **title** is split into 2 parts: the **type** and the **subject**.
+O **título** é dividido em duas partes: o **tipo** e o **assunto**.
 
-### Type
+### Model
 
-The type is contained within the title and can be one of the following:
+O tipo está contido no título e pode ser um dos seguintes:
 
-- **feat:** a new feature
-- **fix:** a bug fix
-- **docs:** changes to documentation
-- **style:** formatting, missing semi-colons, etc.; no code change
-- **refactor:** refactoring production code
-- **test:** adding tests, refactoring test; no production code change
-- **chore:** updating build tasks, package manager configs, etc.; no production code change
+- **feat:** um novo recurso
+- **fix:** uma correção de bug
+- **docs:** alterações na documentação
+- **style:** formatação, falta de ponto e vírgula, etc.; sem alteração de código
+- **refactor:** refatorar o código de produção
+- **test:** adição de testes, teste de refatoração; sem alteração de código de produção
+- **chore:** atualizar tarefas de compilação, configurações do gerenciador de pacotes, etc.; sem alteração de código de produção
 
 ### Subject
 
-Subjects should be no greater than 50 characters, should begin with a capital letter and do not end with a period. Use the imperative mood in the subject line. Separate the subject from the body (when there is one) with a blank line.
+Os assuntos não devem ter mais de 50 caracteres, devem começar com letra maiúscula e não terminar com ponto. Use o modo imperativo na linha de assunto. Separe o assunto do corpo (quando houver) com uma linha em branco.
 
-Example:
+Exemplo:
 
 ```
 # GOOD
@@ -92,19 +92,19 @@ More fixes from broken stuff
 
 ### Body
 
-As not all commits are complex enough to warrant a body, it should only be present in the message when providing context there and then will save fellow and future contributors' time. Normally you'll want to provide more context when your commit has one of these types: `feat`, `refactor` and `fix`.
+Como nem todos os commits são complexos o suficiente para garantir um corpo, ele só deve estar presente na mensagem ao fornecer o contexto e economizar tempo dos colegas e futuros contribuidores. Normalmente você vai querer fornecer mais contexto quando seu commit tiver um desses tipos: `feat`, `refactor` e `fix`.
 
-Use the body to explain the what and why of a commit, not the how – the code is supposed to do that.
+Use o corpo para explicar o que e o porquê de um commit, não o como – o código deve fazer isso.
 
-When writing a commit message, think about what you would need to know if you ran across the commit a year from now.
+Ao escrever uma mensagem de commit, pense no que você precisaria saber se você executasse o commit daqui a um ano.
 
-Wrap the body at 72 characters per line.
+Enrole o corpo em 72 caracteres por linha.
 
 ### Footer
 
-The footer is also optional and is used for tracking/referring to issues:
+O rodapé também é opcional e é usado para rastreamento/referência a problemas:
 
-Example:
+Exemplo:
 
 ```
 
@@ -116,22 +116,22 @@ See also: #456, #789
 
 ## Merging
 
-- **Do not rewrite published history.** The repository's history is valuable in its own right and it is very important to be able to tell what actually happened. Altering published history is a common source of problems for anyone working on the project.
-- However, there are cases where rewriting history is legitimate. These are when:
-  - You are the only one working on the branch and it is not being reviewed.
-  - You want to tidy up your branch (eg. squash commits) and/or rebase it onto the `master` in order to merge it later.
+- **Não reescreva o histórico publicado.** O histórico do repositório é valioso por si só e é muito importante poder contar o que realmente aconteceu. Alterar o histórico publicado é uma fonte comum de problemas para quem trabalha no projeto.
+- No entanto, há casos em que reescrever a história é legítimo. São quando:
+  - Você é o único trabalhando na filial e ela não está sendo revisada.
+  - Você quer arrumar seu branch (ex. squash commits) e/ou rebase ele no `master` para fazer o merge mais tarde.
 
-- That said, never rewrite the history of the `master` branch or any other special branches (ie. used by production or CI servers).
+- Dito isso, nunca reescreva o histórico do branch `master` ou qualquer outro branch especial (ou seja, usado por servidores de produção ou CI).
 
-- Keep the history clean and simple. Just before you merge your branch:
-  - Make sure it conforms to the style guide and perform any needed actions if it doesn't (squash/reorder commits, reword messages etc.)
-  - Rebase it onto the branch it's going to be merged to
+- Mantenha a história limpa e simples. Pouco antes de você mesclar sua ramificação:
+  - Certifique-se de que está em conformidade com o guia de estilo e execute as ações necessárias, caso não esteja (squash/reordenar commits, reformular mensagens etc.)
+  - Rebase para o branch que será mesclado
 
-- This results in a branch that can be applied directly to the end of the `master` branch and results in a very simple history.
+- Isso resulta em um branch que pode ser aplicado diretamente no final do branch `master` e resulta em um histórico muito simples.
 
-- This strategy is better suited for projects with short-running branches. Otherwise it might be better to occasionally merge the `master` branch instead of rebasing onto it.
+- Esta estratégia é mais adequada para projetos com filiais de curta duração. Caso contrário, pode ser melhor ocasionalmente mesclar o branch `master` em vez de fazer o rebase nele.
 
-- If your branch includes more than one commit, do not merge with a fast-forward:
+- Se sua ramificação incluir mais de um commit, não faça merge com fast-forward:
 
 ```
 # GOOD - ensures that a merge commit is created
@@ -143,31 +143,19 @@ $ git merge --no-ff my-branch
 $ git merge my-branch
 ```
 
-- **NEVER** commit something like `Fix linter` or `Fix tests`. These `fixes` should be squashed to the commits that originated the change.
+- **NUNCA** faça commit de algo como `Fix linter` ou `Fix tests`. Essas `correções` devem ser compactadas nos commits que originaram a mudança.
 
-- **NEVER** fully squash a branch before merging it, unless the whole branch (all commits) are related to a single logical change.
+- **NUNCA** esmague completamente uma ramificação antes de mesclá-la, a menos que toda a ramificação (todos os commits) esteja relacionada a uma única alteração lógica.
 
-- **NEVER** use git merge master on a branch. **ALWAYS** use git rebase master, then force-push, wait for the CI to clear and only then merge into master.
+- **NUNCA** use git merge master em um branch. **SEMPRE** use o git rebase master, depois force-push, espere o CI limpar e só então mescle no master.
 
-- **CONVENTION** is to always use Github's web interface to merge into master and **NEVER** using Git on the command -line (i.e. git checkout master; git merge --no-ff branch; git push). This avoids confusion and forgetting about some really important things such as non-fast-forward merge.
+- **CONVENÇÃO** é sempre usar a interface web do Github para mesclar no master e **NUNCA** usar o Git na linha de comando (ou seja, git checkout master; git merge --no-ff branch; git push). Isso evita confusão e esquecimento de algumas coisas realmente importantes, como a mesclagem sem avanço rápido.
 
-## Miscellaneous
+## Outros
 
-- There are various workflows and each one has its strengths and weaknesses. Whether a workflow fits your case, depends on the team, the project and your development procedures.
+- Existem vários fluxos de trabalho e cada um tem seus pontos fortes e fracos. Se um fluxo de trabalho se adapta ao seu caso, depende da equipe, do projeto e dos seus procedimentos de desenvolvimento.
 
-That said, the most important thing is to actually choose a workflow and stick with it.
+Dito isso, o mais importante é realmente escolher um fluxo de trabalho e mantê-lo.
 
-- _Be consistent_. This is related to the workflow but also expands to things like commit messages, branch names and tags. Having a consistent style throughout the repository makes it easy for all contributors to understand what is going on by looking at the log, a commit message, etc.
-- _Test before you push_. Do not push half-done work.
-
-**Use the Common Sense, Luke.** FOLLOW THIS GUIDE! This is really important, otherwise we would not make you read this before contributing to our repositories.
-
-## Acknowledgments
-
-This guide was inspired on other guides found in the community, some of which we'd like to give a special thanks:
-
-[https://github.com/agis/git-style-guide#merging](https://github.com/agis/git-style-guide#merging)
-
-[https://chris.beams.io/posts/git-commit/](https://chris.beams.io/posts/git-commit/)
-
-[https://github.com/chrisjlee/git-style-guide](https://github.com/chrisjlee/git-style-guide)
+- _Ser consistente_. Isso está relacionado ao fluxo de trabalho, mas também se expande para coisas como mensagens de confirmação, nomes de ramificações e tags. Ter um estilo consistente em todo o repositório torna mais fácil para todos os contribuidores entender o que está acontecendo olhando para o log, uma mensagem de commit, etc.
+- _Teste antes de dar "push"_. Não empurre o trabalho pela metade.
